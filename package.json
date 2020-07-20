@@ -1,0 +1,27 @@
+{
+  "name": "test-reqres-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-backend": "webpack-here application/backend.jsx compiled/backend.js --customConfig=config/webpack/backend.webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackDTaylor/test-reqres-api.git"
+  },
+  "author": "JackDTaylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JackDTaylor/test-reqres-api/issues"
+  },
+  "homepage": "https://github.com/JackDTaylor/test-reqres-api#readme",
+  "devDependencies": {
+    "webpack-here": "^1.2.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.2",
+    "mysql2": "^2.1.0"
+  }
+}
