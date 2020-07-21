@@ -1,2 +1,2 @@
 // noinspection JSFileReferences
-require('./compiled/backend.js');
+require('./compiled/backend');
