@@ -1,4 +1,127 @@
-#application {
-	width: 1024px;
-	margin: 0 auto;
+body {
+	margin: 0;
+	font-family: Tahoma, sans-serif;
+	font-size: 20px;
+}
+
+.application {
+	max-width: 1024px;
+	margin: 3em auto 0;
+	padding: 1em;
+	box-sizing: border-box;
+}
+
+@gray: #dddddd;
+@blue: #346df5;
+
+.search-form {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 1.5em;
+
+	&__input {
+		font-size: inherit;
+		padding: 0.5em;
+		width: 100%;
+		margin-right: 0.25em;
+		border-radius: 0.125em;
+		border: 1px solid @gray;
+
+		&:user-invalid {
+			border-color: red;
+		}
+	}
+
+	&__button {
+		position: relative;
+		font-size: inherit;
+		padding: 0.5em 2em;
+		background-color: @gray;
+		border: 0 none;
+		border-radius: 0.125em;
+		outline: none;
+		cursor: pointer;
+		color: darken(@gray, 75%);
+		transition: color 225ms ease;
+
+		&:hover {
+			background-color: darken(@gray, 5%);
+		}
+
+		&:active {
+			background-color: darken(@gray, 10%);
+		}
+
+		.circle(@size) {
+			width:  @size;
+			height: @size;
+			left: calc(50% - @size / 2);
+			top:  calc(50% - @size / 2);
+		}
+
+		.rotaton(@speed: 1) {
+			@keyframes rotaton {
+				from { transform: rotate(0deg);   }
+				to   { transform: rotate(360deg); }
+			}
+
+			animation: rotaton @speed * 2s linear infinite;
+		}
+
+		//noinspection CssReplaceWithShorthandSafely
+		&:before, &:after {
+			opacity: 0;
+			content: '';
+			display: block;
+			position: absolute;
+			box-sizing: border-box;
+			border-radius: 50%;
+			transition: opacity 225ms ease;
+
+			.circle(1.5em);
+
+			border: 2px solid transparent;
+			border-top: 2px solid fade(@blue, 75%);
+			border-right: 2px solid fade(@blue, 75%);
+
+			.rotaton(1);
+		}
+
+		&:after {
+			.circle(1.2em);
+			.rotaton(1.6);
+			animation-direction: reverse;
+		}
+
+		&--isLoading {
+			color: transparent;
+
+			&:before, &:after {
+				opacity: 1;
+				transition: opacity 500ms ease 150ms;
+			}
+		}
+	}
+}
+
+.search-result-list {
+	&__message {
+		text-align: center;
+		color: fade(black, 33%);
+		font-size: 0.8em;
+		padding: 2em;
+	}
+}
+
+.search-result {
+	margin-bottom: 1em;
+
+	&__name {
+
+	}
+
+	&__email {
+		font-size: 0.8em;
+		color: fade(black, 80%);
+	}
 }
