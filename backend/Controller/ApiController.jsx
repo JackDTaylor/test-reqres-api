@@ -7,7 +7,21 @@ export default class ApiController extends AbstractController {
 
 	@endpoint('/user/search')
 	async userSearchEndpoint() {
-		return [];
+		const searchTerms = String(this.request.query.searchTerm || '')
+			.replace(/\s+/g, ' ')
+			.trim()
+			.split(' ');
+
+		const query = this.db.table('user');
+
+		for(let term of searchTerms) {
+			term = `%${term.replace('%', '\\%')}%`;
+
+			query.orWhere('first_name', 'like', term);
+			query.orWhere('last_name', 'like', term);
+		}
+
+		return query;
 	}
 
 	@endpoint('/user/test-import')
