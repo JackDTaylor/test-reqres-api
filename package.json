@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build-frontend & npm run build-backend & npm run build-cron-worker",
-    "build-backend": "     webpack-here backend.jsx     compiled/backend.js     --customConfig=config/webpack/backend.webpack.config.js",
-    "build-frontend": "    webpack-here frontend.jsx    compiled/frontend.js    --customConfig=config/webpack/frontend.webpack.config.js",
-    "build-cron-worker": " webpack-here cron-worker.jsx compiled/cron-worker.js --customConfig=config/webpack/cron-worker.webpack.config.js"
+    "build": "npm run build-frontend & npm run build-backend & npm run build-cli",
+    "build-backend": " webpack-here backend.jsx  compiled/backend.js  --customConfig=config/webpack/backend.webpack.config.js",
+    "build-frontend": "webpack-here frontend.jsx compiled/frontend.js --customConfig=config/webpack/frontend.webpack.config.js",
+    "build-cli": "     webpack-here cli.jsx compiled/cli.js           --customConfig=config/webpack/cli.webpack.config.js"
   },
   "repository": {
     "type": "git",
