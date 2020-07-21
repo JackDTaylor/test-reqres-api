@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/JackDTaylor/test-reqres-api#readme",
   "devDependencies": {
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-here": "^1.2.4"
   },
   "dependencies": {
