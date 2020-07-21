@@ -4,6 +4,8 @@
  * @param objectConstructors
  * @return {*}
  */
+import HttpMethod from "../References/HttpMethod";
+
 export const valueType = function valueType(value, objectConstructors = false) {
 	if(typeof(value) === 'string' || value instanceof String) {
 		return String;
@@ -88,4 +90,13 @@ export const cmp = function(a, b) {
 	}
 
 	return a > b ? 1 : -1;
+};
+
+export const endpoint = function(url = '/', httpMethod = HttpMethod.GET) {
+	return (prototype, endpoint) => {
+		endpoint = endpoint.replace(/Endpoint$/, '');
+
+		prototype.constructor.Routes = prototype.constructor.Routes || [];
+		prototype.constructor.Routes.push({httpMethod, url, endpoint});
+	};
 };

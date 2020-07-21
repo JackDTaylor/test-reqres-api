@@ -1,14 +1,20 @@
 import AbstractController from "./AbstractController";
-import User from "../../models/User";
+import {endpoint} from "../../common/Utils/functions";
+import ImportUsersCommand from "../Commands/ImportUsersCommand";
 
 export default class ApiController extends AbstractController {
+	static BaseUrl = '/api';
+
+	@endpoint('/user/search')
 	async userSearchEndpoint() {
-		const User = getModel(User);
+		return [];
+	}
 
-		const a = await getModel(User).Query()
-			.where('id', 1)
-			.first();
+	@endpoint('/user/test-import')
+	async testUserImportEndpoint() {
+		const command = new ImportUsersCommand(this.application);
+		await command.execute();
 
-		dpr(a);
+		return true;
 	}
 }

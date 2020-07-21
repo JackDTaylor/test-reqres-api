@@ -1,6 +1,7 @@
 import {valueType} from "../../common/Utils/functions";
+import Component from "../Component";
 
-export default class AbstractController {
+export default class AbstractController extends Component {
 	resuest;
 	response;
 
@@ -14,7 +15,9 @@ export default class AbstractController {
 		this.response.set({'Content-Type': value});
 	}
 
-	constructor(request, response) {
+	constructor(application, request, response) {
+		super(application);
+
 		this.request = request;
 		this.response = response;
 
@@ -43,6 +46,14 @@ export default class AbstractController {
 	sendResponse(response) {
 		if(response instanceof Buffer) {
 			response = response.toString();
+		}
+
+		if(valueType(response) === Array) {
+			response = { items: response, success: true };
+		}
+
+		if(valueType(response) === Boolean) {
+			response = { success: response };
 		}
 
 		if(valueType(response) === Object) {
