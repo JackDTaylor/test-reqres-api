@@ -15,10 +15,10 @@ import {dpr} from "./common/Utils/dpr";
 		process.on('SIGUSR1', exitHandler);
 		process.on('SIGUSR2', exitHandler);
 
-		process.on('uncaughtException', EmergencyServer.run);
+		process.on('uncaughtException', EmergencyServer.Run);
 
 		await application.run();
 	} catch(error) {
-		EmergencyServer.run(error);
+		EmergencyServer.Run(error);
 	}
 })();
