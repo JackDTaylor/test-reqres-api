@@ -9,12 +9,18 @@ const {readFileAsync} = Promise.promisifyAll(FileSystem);
 export default class SiteController extends AbstractController {
 	static BaseUrl = '/';
 
+	layoutHtml = null;
+
 	get layoutFile() {
 		return Path.resolve('layouts/index.html');
 	}
 
-	@endpoint()
+	@endpoint('/')
 	async indexEndpoint() {
-		return readFileAsync(this.layoutFile);
+		if(!this.layoutHtml) {
+			this.layoutHtml = await readFileAsync(this.layoutFile);
+		}
+
+		return this.layoutHtml;
 	}
 }
