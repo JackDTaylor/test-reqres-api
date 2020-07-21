@@ -7,8 +7,8 @@ global._dpr = function _dpr(values, separator = "\n\n", colors = false) {
 	try {
 		// noinspection ExceptionCaughtLocallyJS
 		throw new Error;
-	} catch(e) {
-		stack = e.stack.split('\n')[3];
+	} catch(error) {
+		stack = error.stack.split('\n')[3];
 		stack = stack.replace(/^.*\((.*)\).*$/, '$1');
 	}
 

@@ -1,6 +1,3 @@
-/config/config.jsx
-/.idea/
-
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
@@ -107,3 +104,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+/.idea/
+/config/config.jsx
+/public/assets/styles.css
+/public/assets/styles.css.map
