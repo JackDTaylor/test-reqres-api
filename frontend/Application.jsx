@@ -5,25 +5,9 @@ import {bound} from "../common/Utils/decorators";
 import QueryString from "querystring";
 
 export default class Application extends ReactComponent {
-	// state = {
-	// 	isLoading: false,
-	// 	items: [],
-	// };
-
 	state = {
-		"items": [{
-			"id": 31,
-			"email": "tracey.ramos@reqres.in",
-			"first_name": "Tracey",
-			"last_name": "Ramos",
-			"external_id": 6
-		}, {
-			"id": 37,
-			"email": "rachel.howell@reqres.in",
-			"first_name": "Rachel",
-			"last_name": "Howell",
-			"external_id": 12
-		}], "isLoading": false
+		isLoading: false,
+		items: null,
 	};
 
 	async fetchUsers(query) {
